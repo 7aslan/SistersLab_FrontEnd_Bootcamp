@@ -5,7 +5,7 @@ const options = ["rock", "paper", "scissors"];
 const RockPaperScissors = () => {
   const [human, setHuman] = useState(null);
   const [computer, setComputer] = useState(null);
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState([]);
   const [humanWin, setHumanWin] = useState(0);
   const [computerWin, setComputerWin] = useState(0);
 
