@@ -17,6 +17,7 @@ const RockPaperScissors = () => {
     setHumanChoice(choice)
     setComputerChoice(computerChoice);
     winner(choice, computerChoice);
+    
   };
 
   const winner = (user, computer) =>{
