@@ -1,18 +1,18 @@
 import { useState } from 'react'
 import './App.css'
-import RockPaperScissors from './assets/Components/RockPaperScissors'
-import ToDoApp from './Components/TodoApp/ToDoApp'
-
+import RockPaperScissors from './Components/RockPaperScissors';
 function App() {
 
   return (
     <>
       <h1>App</h1>
-        {/* <RockPaperScissors/> */}
-        <ToDoApp/>
+      <RockPaperScissors/>
+
+
+
 
     </>
   )
 }
 
-export default App
+export default App;

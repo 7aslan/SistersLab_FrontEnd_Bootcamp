@@ -1,66 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-const options = ["rock", "paper", "scissors"];
+
+const options = ["rock","paper","scissors"];
 
 const RockPaperScissors = () => {
-  const [human, setHuman] = useState(null);
-  const [computer, setComputer] = useState(null);
-  const [result, setResult] = useState([]);
+
+  const [humanChoice, setHumanChoice] = useState(null);
+  const [computerChoice, setComputerChoice ] = useState(null);
+  const [result, setResult] = useState(null);
   const [humanWin, setHumanWin] = useState(0);
   const [computerWin, setComputerWin] = useState(0);
 
-  const randomItemByComputer = () => {
+  const handleChoice = (choice) =>{
     const randomIndex = Math.floor(Math.random() * options.length);
-    setComputer(options[randomIndex]);
+    const computerChoice = options[randomIndex]
+    setHumanChoice(choice)
+    setComputerChoice(computerChoice);
+    winner(choice, computerChoice);
   };
 
-  const handleHumanOption = (value) => {
-    setHuman(value);
-    randomItemByComputer();
-    Winner(value);
-  };
-
-  const Winner = (humanChoice) => {
-    if (humanChoice === computer) {
-      setResult("Draw");
-    } else if (
-      (humanChoice === "rock" && computer === "scissors") ||
-      (humanChoice === "paper" && computer === "rock") ||
-      (humanChoice === "scissors" && computer === "paper")
-    ) {
-      setResult("You Won");
-      setHumanWin(humanWin + 1);
-      setComputerWin(computerWin);
-    } else {
+  const winner = (user, computer) =>{
+    if (user === computer){
+      setResult("Draw")
+    } else if(
+      (user==="rock" && computer==="scissors")||
+      (user==="paper" && computer==="rock")||
+      (user==="scissors" && computer==="paper")
+    ){
+      setResult("You won");
+      setHumanWin(humanWin+1);
+    }else{
       setResult("Computer Won");
-      setHumanWin(humanWin);
-      setComputerWin(computerWin + 1);
+      setComputerWin(computerWin+1);
     }
   };
 
-  return (
-    <div className='RockPaperScissors'>
-      <h1>Rock Paper Scissors Game</h1>
-      <div className='options'>
-        {options.map((option) => (
-          <button key={option} onClick={() => handleHumanOption(option)}>
-            {option}
-          </button>
-        ))}
-      </div>
 
-      {human && (
-        <div className='result'>
-          <p>You : {human}</p>
-          <p>Computer : {computer}</p>
-          <p>Result: {result}</p>
+
+
+  return (
+    <div>
+      <h1>Rock Paper Scissors</h1>
+      <div>
+        <button onClick={()=> handleChoice("rock")}>Rock</button>
+        <button onClick={()=> handleChoice("paper")}>Paper</button>
+        <button onClick={()=> handleChoice("scissors")}>Scissors</button>
+      </div>
+      {humanChoice && computerChoice && result && (
+        <div>
+          <p>You : {humanChoice}</p>
+          <p>Computer : {computerChoice}</p>
+          <p>Result : {result}</p>
         </div>
       )}
-
-      <div className='total-score'>
-        <p>You won: {humanWin} times</p>
-        <p>Computer won: {computerWin} times</p>
+      <div>
+        <p>You Won: {humanWin} times.</p>
+        <p>Computer Won: {computerWin} times. </p>
       </div>
+
     </div>
   );
 };
