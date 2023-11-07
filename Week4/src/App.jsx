@@ -1,11 +1,10 @@
-import Calculator from "./Components/Calculator";
-
+import RandomPost from "./Components/RandomPost";
 function App() {
 
 
   return (
     <>
-    <Calculator/>
+      <RandomPost/>
 
 
     </>
