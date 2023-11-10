@@ -1,6 +1,5 @@
 import { useEffect , useState } from "react";
-// import { fetchCharacters } from "../api";
-import RandomPost from "../RandomPost/randomPost";
+import { fetchCharactersWithFetch } from "../FetchandAxios/fetch";
 import {
     Autocomplete,
     Button,
@@ -24,7 +23,7 @@ const Characters = () =>{
     const [error, setError] = useState(null);
     
     const getCharacters = async () =>{  
-      const characters = await RandomPost();
+      const characters = await fetchCharactersWithFetch();
       setCharacters(characters);         
     };
 
