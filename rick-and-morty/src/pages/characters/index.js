@@ -1,6 +1,6 @@
 import { useEffect , useState } from "react";
-import { fetchCharacters } from "../api";
-
+// import { fetchCharacters } from "../api";
+import RandomPost from "../RandomPost/randomPost";
 import {
     Autocomplete,
     Button,
@@ -21,10 +21,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 const Characters = () =>{
     const [characters, setCharacters] = useState([]);
     const [selectedCharacter, setSelectedCharacter] = useState(null);
+    const [error, setError] = useState(null);
     
-    const getCharacters = async () =>{
-        const characters = await fetchCharacters();
-        setCharacters(characters);
+    const getCharacters = async () =>{  
+      const characters = await RandomPost();
+      setCharacters(characters);         
     };
 
     useEffect(()=>{
